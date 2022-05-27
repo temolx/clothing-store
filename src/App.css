@@ -1,38 +1,952 @@
-.App {
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
   text-align: center;
+  font-family: "Poppins", sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+button {
+  font-family: "Poppins", sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* ONLINE STORE CSS */
+
+.onlineStore {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background-color: #fff;
+  padding: 90px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.storeItems {
+  background-color: #fff;
+}
+
+.itemImage {
+  width: 95%;
+  cursor: pointer;
+  border: 1.2px solid black;
+  /* filter: brightness(0.7); */
+}
+
+.item-container {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.itemText {
+  overflow: hidden;
+  position: absolute;
+  top: 50%;
+
+  z-index: 99;
+
+  left: 0; 
+  right: 0; 
+  margin-left: auto; 
+  margin-right: auto; 
+  width: 100%;
+}
+
+.storeItems h3 {
+  font-weight: 500;
+}
+
+.storeItems h3:last-of-type {
+  font-weight: 400;
+}
+
+.purchaseButton {
+  background-color: black;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  margin-top: 15px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.purchaseButton:hover {
+  background-color: #eeefe1;
+  color: black;
+}
+
+.favButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 15px 35px;
+
+  background: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.favButton:hover {
+  transform: scale(1.2);
+}
+
+.favButton img {
+  width: 35px;
+}
+
+/* NAVBAR CSS */
+
+nav {
+  background-color: #eeefe1;
+  padding: 80px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+nav ul {
+  display: flex;
+  list-style: none;
+  white-space: nowrap;
+  font-size: 18px;
+  margin-left: 30px;
 }
 
-@keyframes App-logo-spin {
-  from {
+nav ul li {
+  margin: 70px 70px 0 0;
+  cursor: pointer;
+  font-size: 15px;
+  letter-spacing: 1px;
+  transition: 0.3s ease-in-out;
+}
+
+nav ul li a:nth-child(2):hover, nav ul li:nth-child(3):hover, nav ul li:nth-child(2):hover, nav ul li:nth-child(4):hover {
+  padding: 0 50px;
+}
+
+nav ul li a:hover, nav ul li:hover {
+  text-decoration-line: overline;
+  text-decoration-thickness: 1.5px;
+}
+
+
+nav img {
+  width: 200px;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.navIcons img {
+  width: 28px;
+  margin-left:30px;
+}
+
+.navIcons {
+  display: flex;
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 30px;
+}
+
+.navIcons h6 {
+  font-weight: 400;
+  line-height: 27px;
+  margin-left: 10px;
+}
+
+/* CART CSS */
+
+.cart {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 50px;
+}
+
+.checkout-info img {
+  width: 180px;
+  border-radius: 5px;
+}
+
+.storeItems-list {
+  display: flex;
+  background-color: #eeefe1;
+  margin-bottom: 45px;
+  padding: 25px;
+  border-radius: 5px;
+  width: 100%;
+
+  position: relative;
+}
+
+.item-details h3 {
+  font-weight: 400;
+  margin-left: 50px;
+}
+
+.item-details {
+  margin-top: 70px;
+  text-align: left;
+  font-size: 14px;
+  display: flex;
+}
+
+.remove-button button {
+  background: none;
+  border: none;
+}
+
+.remove-button button img {
+  width: 22px;
+  cursor: pointer;
+
+  position: absolute;
+  right: 25px;
+  top: 25px;
+
+  transition: 0.3s ease-in-out;
+}
+
+.remove-button button img:hover {
+  transform: scale(1.2);
+}
+
+.details-text {
+  margin-right: 15px;
+}
+
+.cartHeader {
+  margin: 100px 0 50px 0;
+  font-size: 45px;
+  font-weight: 600;
+}
+
+.checkout {
+  padding: 30px;
+}
+
+.checkout-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.checkout-item h5 {
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+hr {
+  margin: 15px 0;
+}
+
+.total h5 {
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.discount {
+  font-weight: 700;
+  color: #d6001c;
+  margin-top: 15px;
+}
+
+.tax {
+  font-weight: 500;
+  color: #707070;
+  font-size: 12px;
+  margin-top: 50px;
+}
+
+.checkoutButton {
+  margin-top: 55px;
+}
+
+.payment-options {
+  display: flex;
+  justify-content: center;
+  margin-top: 35px;
+}
+
+.payment-options img {
+  width: 35px;
+  margin-right: 20px;
+}
+
+.payment-options h5 {
+  font-weight: 600;
+  font-size: 11px;
+  margin-right: 15px;
+  margin-top: 10px;
+}
+
+.select-quantity {
+  padding: 20px 65px 20px 18px;
+  margin: 20px 0 0 50px;
+  appearance: none;
+  background-image: url("./images/down-arrow.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-size: 22px;
+  background-position: 55px 16px;
+  font-size: 12px;
+}
+
+select:focus {
+  outline: none;
+}
+
+/* FAVORITES CSS */
+
+.fav-container {
+  padding: 50px;
+  margin-bottom: 260px;
+}
+
+.favHeader {
+  margin: 100px 0 90px 0;
+  font-size: 45px;
+  font-weight: 600;
+}
+
+.fav-list h4 {
+  font-weight: 400;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+}
+
+.favImg {
+  width: 400px;
+  border: 1.2px solid black;
+}
+
+.favorites {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  row-gap: 60px;
+  column-gap: 10px;
+  margin-bottom: 60px;
+}
+
+.favorites .purchaseButton {
+  padding: 10px 25px;
+}
+
+.favorites .purchaseButton img {
+  width: 15px;
+  filter: invert(100);
+  margin-right: 5px;
+  transition: 0.3s ease-in-out;
+}
+
+.favorites .purchaseButton:hover > img {
+  filter: none;
+}
+
+.trash-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.trash-btn img {
+  width: 24px;
+}
+
+.fav-container header {
+  display: flex;
+  justify-content: center;
+}
+
+.fav-container header h5 {
+  font-weight: 400;
+  position: absolute;
+  top: 380px;
+  right: 60px;
+}
+
+.fav-buttons {
+  display: flex;
+  justify-content: center;
+  margin-left: 40px;
+}
+
+.fav-buttons button {
+  margin-right: 35px;
+}
+
+/* DISCOUNT CSS */
+
+.discount-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 35px;
+}
+
+.discount-container h5 {
+  font-weight: 400;
+}
+
+.discount-container button {
+  text-decoration: underline;
+  background: none;
+  border: none;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+}
+
+.discount-container button:hover {
+  color: #707070;
+}
+
+/* DISCOUNT POP-UP CSS */
+
+.discount-cont {
+  color: black;
+  background-color: #faf9f8;
+  padding: 77px;
+  width: 600px;
+  height: 350px;
+
+  position: fixed;
+  z-index: 999;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  box-shadow: 10px 10px 33px 0px rgba(0, 0, 0, 0.33);
+}
+
+.discount-cont h2 {
+  font-weight: 500;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.discount-cont .info input {
+  padding: 13px 95px 10px 10px;
+  margin: 10px 20px 0 0;
+  border: solid black 0.5px;
+}
+
+input:focus {
+  outline: none;
+}
+
+.discount-cont .info h5 {
+  font-weight: 400;
+  font-size: 13px;
+  text-align: left;
+}
+
+.discount-cont .info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.discount-input {
+  display: block;
+}
+
+.discountButton {
+  padding: 10px 40px;
+  margin-top: 28px;
+}
+
+.discount-cont img {
+  width: 22px;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  margin: 35px;
+  cursor: pointer;
+}
+
+.discount-cont h3 {
+  color: #d6001c;
+  font-weight: 600;
+  font-size: 15px;
+  text-align: left;
+  margin: 11px 0 0 36px;
+}
+
+#overlay {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+}
+
+/* EXISTS ERROR CSS */
+
+@keyframes errorAnimation {
+  0% {
+    transform: translateX(300px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.existsError {
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 20px;
+  color: #fff;
+  background-color: #191919;
+  padding: 12px 30px;
+  border-radius: 30px;
+  box-shadow: 10px 10px 35px -4px rgba(0,0,0,0.20);
+
+  position: fixed;
+  bottom: 40px;
+  right: 50px;
+  z-index: 9999;
+
+  animation: errorAnimation 0.6s ease-in-out;
+}
+
+/* EMPTY PAGE CSS */
+
+.empty {
+  margin-top: 70px;
+}
+
+.empty img {
+  width: 110px;
+}
+
+.empty h1 {
+  font-weight: 500;
+}
+
+.empty-cart {
+  padding: 10px;
+}
+
+.empty-cart h1 {
+  font-size: 23px;
+  margin-top: 15px;
+}
+
+.empty-cart img {
+  width: 120px;
+}
+
+/* DROP DOWN MENU */
+
+.drop-down-container {
+  position: relative;
+  height: 4vh;
+ }
+
+.drop-down {
+  position: absolute;
+  display: block;
+  background-color: #111111;
+  /* background-color: red; */
+  color: #fff;
+  margin-top: 10px;
+  z-index: 99;
+}
+
+.drop-down h4 {
+  font-weight: 400;
+  margin: 25px 10px;
+  cursor: pointer;
+  text-align: left;
+  transition: 0.3s ease-in-out;
+}
+
+.drop-down a {
+  color: #fff;
+}
+
+.drop-down a:hover {
+  color: #CECECE;
+  text-decoration: none;
+}
+
+/* LANDING PAGE CSS */
+
+
+video {
+  position: absolute;
+  top: 330px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -99;
+  object-fit: cover;
+}
+
+.text-container {
+  text-align: center;
+  margin-top: 40vh;
+}
+
+.landing button {
+  color: black;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 60px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.landing button:after {
+  content: "";
+  position: absolute;
+  background-color: black;
+  width: 0;
+  height: 3.9px;
+  left: 0;
+  bottom: -6px;
+  transition: 0.4s ease-in-out;
+}
+
+.landing button:hover:after {
+  width: 100%;
+}
+
+/* CONTACT PAGE CSS */
+
+.contact {
+  background-image: url('./images/store.jpeg');
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact h1 {
+  color: #fff;
+  font-weight: 300;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+}
+
+.contact form input {
+  display: block;
+  margin: 0 auto;
+  padding: 8px 50px;
+  border: none;
+  margin-bottom: 20px;
+  font-size: 12px;
+  font-family: "Poppins", sans-serif;
+}
+
+.contact form input:last-of-type {
+  background-color: #EEEFE1;
+  text-transform: uppercase;
+  padding: 10px 90px;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.contact form input:last-of-type:hover {
+  color: #fff;
+  background-color: black;
+}
+
+/* FOOTER CSS */
+
+footer {
+  background-color: #E4E4E4;
+  padding: 100px;
+  margin-top: 45px; /* dis one */
+}
+
+.social {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+}
+
+.social li img {
+  width: 25px;
+}
+
+.social li {
+  margin-right: 20px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.social li:hover {
+  transform: translateY(-10px);
+  opacity: 85%;
+}
+
+.social li:last-child {
+  margin-right: 0px;
+}
+
+footer p {
+  font-size: 12px;
+  margin-top: 35px;
+}
+
+/* SCROLL FUNCTIONALITY CSS */
+
+.scrollBtn {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding: 280px 14px;
+  z-index: 999;
+}
+
+.scrollBtn button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.scrollBtn img {
+  width: 70px;
+  transition: 0.3s ease-in-out;
+}
+
+.scrollBtn img:hover {
+  opacity: 80%;
+}
+
+/* BURGER MENU CSS */
+
+.burgerMenu {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 30px;
+  z-index: 9999;
+}
+
+@keyframes rotate {
+  0% {
     transform: rotate(0deg);
   }
-  to {
-    transform: rotate(360deg);
+  100% {
+    transform: rotate(180deg);
+  }
+}
+
+.burgerMenu img {
+  width: 35px;
+  cursor: pointer;
+}
+
+.burgerMenu img:hover {
+  animation: rotate 0.8s ease-in-out;
+}
+
+.mobile-menu {
+  display: none;
+  list-style: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+}
+
+@keyframes burgerAnimation {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  100% {
+    opacity: 100%;
+    transform: translateX(0);
+  }
+}
+
+.mobile-menu li, .mobile-menu a {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 18px;
+  padding: 50px;
+  cursor: pointer;
+  animation: burgerAnimation 0.5s ease-in-out;
+}
+
+.mobile-menu li:hover, .mobile-menu a:hover {
+  text-decoration: overline;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100;
+  }
+}
+
+#whiteBG {
+  display: none;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  opacity: 98%;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* SEARCH CSS */
+
+nav form {
+  position: absolute;
+  top: 290px;
+  right: 50px;
+}
+
+nav form input {
+  background: none;
+  border: none;
+  border-bottom: black solid 1.4px;
+  width: 200px;
+  padding: 0 0 6px 28px;
+
+}
+
+nav form input::placeholder {
+  color: black;
+  font-family: "Poppins", sans-serif;
+}
+
+nav form img {
+  width: 16px;
+  margin: 4px 0 0 3px;
+  position: absolute;
+}
+
+/* RESPONSIVE CSS */
+
+@media only screen and (max-width: 1700px) {
+  .favorites {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 60px;
+    column-gap: 10px;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .onlineStore {
+    grid-template-columns: 1fr 1fr;
+    padding: 80px;
+  }
+
+  .favorites {
+    grid-template-columns: 1fr;
+    row-gap: 60px;
+    column-gap: 10px;
+    margin-bottom: -120px;
+  }
+
+  .cart {
+    display: block;
+    padding: 50px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .burgerMenu {
+    display: flex;
+  }
+
+  #whiteBG {
+    display: flex;
+  }
+
+  .mobile-menu {
+    display: flex;
+  }
+
+  nav {
+    padding: 110px;
+  }
+
+  .onlineStore {
+    grid-template-columns: 1fr;
+    padding: 50px;
+  }
+
+  .favorites {
+    grid-template-columns: 1fr;
+    row-gap: 60px;
+    column-gap: 10px;
+  }
+
+  nav ul {
+    display: none;
+  }
+
+  .navIcons img {
+    margin-left: 0px;
+  }
+
+  .navIcons {
+    left: 0;
+    padding: 15px;
+  }
+
+  .navIcons h6 {
+    margin-right: 20px;
+    font-size: 10px;
+  }
+
+  nav img {
+    width: 190px;
+  }
+
+  video {
+    top: 300px;
+  }
+
+  .scrollBtn {
+    right: -15px;
+  }
+
+  nav form {
+    top: 230px;
+    right: 7px;
+  }
+
+  footer {
+    margin-top: 140px;
   }
 }
